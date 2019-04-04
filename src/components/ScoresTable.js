@@ -1,5 +1,6 @@
 import React from 'react';
 import PlayerScores from './PlayerScores';
+import './ScoresTable.css';
 
 
 class ScoresTable extends React.Component {
@@ -26,7 +27,14 @@ class ScoresTable extends React.Component {
     // Update the scores
     player.scores.push(newScore);
     player.total += newScore;
-    player.values[player.values.length - 2] = player.total;
+
+    //console.log(player.values[player.values.length - 2]);
+    if (player.values[player.values.length - 2] === '.') {
+      player.values[player.values.length - 2] = '•';
+    } else {
+      console.log(player.values[player.values.length - 2]);
+      player.values[player.values.length - 2] = player.total;
+    }
 
     this.props.onSubmit(null, playerData);
   }

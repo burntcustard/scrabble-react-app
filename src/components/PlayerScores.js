@@ -8,11 +8,11 @@ class PlayerScores extends React.Component {
     let data = [...this.props.values];
 
     data[index] = value;
-
-    // If the field after has a number in...
-    if (data[index + 1] && parseInt(data[index + 1]) > 0) {
-      // Add the changed by amount to the next score as well
-    }
+    //
+    // // If the field after has a number in...
+    // if (data[index + 1] && parseInt(data[index + 1]) > 0) {
+    //   // Add the changed by amount to the next score as well
+    // }
 
     this.props.onFieldChange(null, data);
   }
@@ -27,6 +27,11 @@ class PlayerScores extends React.Component {
 
     let values = [...this.props.values];
     let newValue = values[values.length - 1];
+
+    if (newValue === '.') {
+      values.push('');
+      this.props.onSubmit(null, values, 0);
+    }
 
     if (!isNaN(newValue)) {
       let newScore = parseInt(newValue);
@@ -47,6 +52,7 @@ class PlayerScores extends React.Component {
           key={index}
           value={value}
           onFieldChange={this.onFieldChange(index)}
+          index={index}
         />
       );
     });

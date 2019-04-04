@@ -1,4 +1,5 @@
 import React from 'react';
+import './ScoreCell.css';
 
 
 class ScoreCell extends React.Component {
@@ -14,8 +15,8 @@ class ScoreCell extends React.Component {
   render() {
     return (
       <input
-        className="scores"
-        type="number"
+        className="score-cell"
+        type="tel"
         value={this.props.value}
         onChange={this.onChange}
       />
