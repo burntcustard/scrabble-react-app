@@ -13,9 +13,9 @@ class Words extends React.Component {
   onTermSubmit = async term => {
 
     // TODO: Correct URL & params
-    const response = await wordLookup.get('/something', {
-      params: { thing: term }
-    });
+    const response = await wordLookup.get(term);
+
+    console.log(response);
 
     this.setState({
       words: response.data.words // TODO: Correct return stuff

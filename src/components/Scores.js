@@ -4,13 +4,37 @@ import ScoresTable from './ScoresTable';
 class Scores extends React.Component {
 
   state = {
-    playerData: []
+    playerData: [
+      {
+        name: 'Player 1',
+        scores: [8, 16, 32]
+      },
+      {
+        name: 'Player 2',
+        scores: [4, 6]
+      }
+    ]
   }
+
+  scoreChange = (field) => (event, value, selectedKey) => {
+    let data = { ...this.state.data };
+
+    data[field] = value;
+    this.setState({ data });
+
+    console.log(value);
+    // console.log(value);
+    // console.log(selectedKey);
+  }
+
 
   render() {
     return(
       <section className="scores">
-        <ScoresTable playerData={this.state.playerData}/>
+        <ScoresTable
+          playerData={this.state.playerData}
+          scoreChange={this.scoreChange('playerData')}
+        />
       </section>
     );
   }
