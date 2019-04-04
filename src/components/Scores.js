@@ -26,9 +26,10 @@ class Scores extends React.Component {
     this.setState({ data });
   }
 
-  scoreSubmit = (field) => (event, value, selectedKey) => {
-    let data = { ...this.state.data };
-    data[field] = value;
+  scoreSubmit = (field) => (event, updatedPlayerData, selectedKey) => {
+    console.log(updatedPlayerData)
+    let data = { ...this.state.playerData };
+    data[field] = updatedPlayerData;
     this.setState({ data });
   }
 
@@ -39,7 +40,7 @@ class Scores extends React.Component {
         <ScoresTable
           playerData={this.state.playerData}
           onFieldChange={this.onFieldChange('playerData')}
-          scoreSubmit={this.scoreSubmit('playerData')}
+          onSubmit={this.scoreSubmit('playerData')}
         />
       </section>
     );

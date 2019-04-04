@@ -17,7 +17,7 @@ class PlayerScores extends React.Component {
     this.props.onFieldChange(null, data);
   }
 
-  onFieldSubmit = (event) => {
+  onSubmit = (event) => {
     event.preventDefault();
 
     // What to do here...
@@ -26,10 +26,12 @@ class PlayerScores extends React.Component {
     // b) check if new value is appropriate and then call thing? Y
 
     let values = [...this.props.values];
-    let newValue = parseInt(values[values.length - 1]);
+    let newValue = values[values.length - 1];
 
-    if (parseInt(newValue) == newValue) {
-      this.props.onSubmit();
+    if (!isNaN(newValue)) {
+      let newScore = parseInt(newValue);
+      values.push('');
+      this.props.onSubmit(null, values, newScore);
     }
 
     // Add new field for the next score:
