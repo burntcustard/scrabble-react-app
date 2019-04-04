@@ -4,8 +4,8 @@ import ScoreCell from './ScoreCell';
 
 class PlayerScores extends React.Component {
 
-  handleFieldChange = (index) => (event, value, selectedKey) => {
-    let data = [...this.props.scores];
+  onFieldChange = (index) => (event, value, selectedKey) => {
+    let data = [...this.props.values];
 
     data[index] = value;
 
@@ -14,33 +14,37 @@ class PlayerScores extends React.Component {
       // Add the changed by amount to the next score as well
     }
 
-    this.props.updateScores(null, data);
+    this.props.onFieldChange(null, data);
   }
 
   onFieldSubmit = (event) => {
     event.preventDefault();
 
-    // Add new score to previous total
-    let data = [...this.props.scores];
+    // What to do here...
 
-    // Add new score to previous total
-    data[data.length - 1] = parseInt(data[data.length - 1]) + parseInt(data[data.length - 2]);
+    // a) Just call a special thing in scoresTable?
+    // b) check if new value is appropriate and then call thing? Y
 
-    //console.log(data);
+    let values = [...this.props.values];
+    let newValue = parseInt(values[values.length - 1]);
+
+    if (parseInt(newValue) == newValue) {
+      this.props.onSubmit();
+    }
 
     // Add new field for the next score:
-    data.push('');
-    this.props.updateScores(null, data);
+    // data.push('');
+    // this.props.updateScores(null, data);
   }
 
   render() {
-    var renderedScores = this.props.scores.map((score, index) => {
+    var renderedScores = this.props.values.map((value, index) => {
       //console.log(score.key);
       return (
         <ScoreCell
           key={index}
-          value={score}
-          scoreCellChanged={this.handleFieldChange(index)}
+          value={value}
+          onFieldChange={this.onFieldChange(index)}
         />
       );
     });
@@ -48,7 +52,7 @@ class PlayerScores extends React.Component {
     return (
       <form
         className="player-scores"
-        onSubmit={this.onFieldSubmit}
+        onSubmit={this.onSubmit}
       >
         {renderedScores}
         <input type="submit" />

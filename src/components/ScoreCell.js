@@ -3,14 +3,9 @@ import React from 'react';
 
 class ScoreCell extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.onChange = this.onChange.bind(this);
-  }
-
-  onChange(e) {
+  onChange = (e) => {
     // TODO: Cell contents validation 'ere?
-    this.props.scoreCellChanged(
+    this.props.onFieldChange(
       null, // event
       e.target.value // contents of the cell (a string)
     );
