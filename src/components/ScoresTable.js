@@ -28,13 +28,24 @@ class ScoresTable extends React.Component {
     player.scores.push(newScore);
     player.total += newScore;
 
-    //console.log(player.values[player.values.length - 2]);
+    // Update the values
     if (player.values[player.values.length - 2] === '.') {
       player.values[player.values.length - 2] = '•';
     } else {
-      console.log(player.values[player.values.length - 2]);
+      //console.log(player.values[player.values.length - 2]);
       player.values[player.values.length - 2] = player.total;
     }
+
+    // Focus the next cell
+    [...document.querySelectorAll('.scores-table > .column')]
+                .reduce((prev, curr, i) => {
+      var inputs = curr.querySelectorAll('.score-cell');
+      if (inputs.length >= prev) {
+        inputs[inputs.length - 1].focus();
+        return inputs.length;
+      }
+      return prev;
+    }, 0);
 
     this.props.onSubmit(null, playerData);
   }

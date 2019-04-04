@@ -23,7 +23,7 @@ class Scores extends React.Component {
   onFieldChange = (field) => (event, value, selectedKey) => {
     let data = [ ...this.state.playerData ];
     data[field] = value;
-    console.log(data);
+    //console.log(data);
     this.setState({ data });
     //console.log(this.state);
   }
