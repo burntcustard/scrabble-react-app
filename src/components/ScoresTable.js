@@ -3,11 +3,6 @@ import PlayerScores from './PlayerScores';
 
 
 class ScoresTable extends React.Component {
-  //
-  // updateScores = event => {
-  //   console.log(event);
-  //   this.props.scoreChange(event);
-  // }
 
   updateScores = (index) => (event, value, selectedKey) => {
     //console.log(value);

@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 class ScoreCell extends React.Component {
 
   constructor(props) {

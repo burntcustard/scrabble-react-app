@@ -7,26 +7,28 @@ class Scores extends React.Component {
     playerData: [
       {
         name: 'Player 1',
-        scores: [8, 16, 32]
+        scores: [8, 16],
+        savedScores: [8, 16]
       },
       {
         name: 'Player 2',
-        scores: [4, 6]
+        scores: [4, 6],
+        savedScores: [4, 6]
       }
     ]
   }
 
   scoreChange = (field) => (event, value, selectedKey) => {
     let data = { ...this.state.data };
-
     data[field] = value;
     this.setState({ data });
-
-    console.log(value);
-    // console.log(value);
-    // console.log(selectedKey);
   }
 
+  scoreSubmit = (field) => (event, value, selectedKey) => {
+    let data = { ...this.state.data };
+    data[field] = value;
+    this.setState({ data });
+  }
 
   render() {
     return(
@@ -34,6 +36,7 @@ class Scores extends React.Component {
         <ScoresTable
           playerData={this.state.playerData}
           scoreChange={this.scoreChange('playerData')}
+          scoreSubmit={this.scoreSubmit('playerData')}
         />
       </section>
     );
