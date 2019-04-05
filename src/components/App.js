@@ -8,13 +8,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="ui-container">
-          <div className="ui">
-            <Words />
-            <Scores />
-          </div>
-        </div>
+      <div className="app">
+        <Words />
+        <Scores />
       </div>
     );
   }

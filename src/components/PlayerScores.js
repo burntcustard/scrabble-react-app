@@ -1,5 +1,6 @@
 import React from 'react';
 import ScoreCell from './ScoreCell';
+import './PlayerScores.css';
 
 
 class PlayerScores extends React.Component {

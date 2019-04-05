@@ -1,0 +1,16 @@
+.search-bar {
+
+}
+
+.search-bar__form {
+  position: relative;
+}
+
+.search-bar__form > input:hover ~ label {
+  outline: 30px solid red;
+  color: blue;
+}
+
+.search-bar__form > label {
+  position: absolute;
+}

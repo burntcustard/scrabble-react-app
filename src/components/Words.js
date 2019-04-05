@@ -2,6 +2,7 @@ import React from 'react';
 import SearchBar from './SearchBar';
 import WordList from './WordList';
 import wordLookup from '../api/wordLookup';
+import './Words.css';
 
 
 class Words extends React.Component {

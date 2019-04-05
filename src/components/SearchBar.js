@@ -1,4 +1,6 @@
 import React from 'react';
+import './SearchBar.css';
+
 
 class SearchBar extends React.Component {
 
@@ -25,14 +27,12 @@ class SearchBar extends React.Component {
           className="search-bar__form"
           onSubmit={this.onFormSubmit}
         >
-          <div className="field">
-            <label>Scrabble Word Lookup</label>
-            <input
-              type="text"
-              value={this.state.term}
-              onChange={this.onInputChange}
-            />
-          </div>
+          <label>Scrabble Word Lookup</label>
+          <input
+            type="text"
+            value={this.state.term}
+            onChange={this.onInputChange}
+          />
         </form>
       </div>
     );
