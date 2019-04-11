@@ -52,7 +52,6 @@ class ScoresTable extends React.Component {
             key={player.key}
             scores={player.scores}
             values={player.values}
-            //onScoreChange={this.onScoreChange(pIndex)}
             onFieldChange={this.onFieldChange(pIndex)}
             onSubmit={this.onSubmit(pIndex)}
           />
