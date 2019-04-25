@@ -4,36 +4,41 @@ import PlayerColumn from './PlayerColumn';
 
 class ScoresTable extends React.Component {
 
-  onSubmit = (index) => (event, values, newScore) => {
+  onSubmit = (index) => (newValue) => {
+
     let playerData = [...this.props.playerData];
     let player = playerData[index];
 
+    player.scores.push(player.values[player.values.length - 1]);
+
     // Update the values
-    player.values = values;
+    //player.values = values;
 
     // Update the scores
-    player.scores.push(newScore);
-    player.total += newScore;
+    //player.scores.push(newScore);
+    //player.total += newScore;
 
     // Update the values
-    if (player.values[player.values.length - 2] === '.') {
-      player.values[player.values.length - 2] = '•';
-    } else {
-      player.values[player.values.length - 2] = player.total;
-    }
+    // if (player.values[player.values.length - 2] === '.') {
+    //   player.values[player.values.length - 2] = '•';
+    // } else {
+    //   player.values[player.values.length - 2] = player.total;
+    // }
 
     // Focus the next cell
     // The "state" for this is in the DOM
-    [...document.querySelectorAll('.scores-table__column')].reduce((prev, curr, i) => {
-      var inputs = curr.querySelectorAll('.score-cell');
-      if (inputs.length >= prev) {
-        inputs[inputs.length - 1].focus();
-        return inputs.length;
-      }
-      return prev;
-    }, 0);
+    // [...document.querySelectorAll('.scores-table__column')].reduce((prev, curr, i) => {
+    //   var inputs = curr.querySelectorAll('.score-cell');
+    //   if (inputs.length >= prev) {
+    //     inputs[inputs.length - 1].focus();
+    //     return inputs.length;
+    //   }
+    //   return prev;
+    // }, 0);
 
-    this.props.onSubmit(null, playerData);
+    console.log(player);
+
+    this.props.onChange(playerData);
   }
 
   onValueChange = (index) => (event, value, selectedKey) => {
@@ -45,9 +50,6 @@ class ScoresTable extends React.Component {
   onNameChange = (index) => (text) => {
     let data = [...this.props.playerData];
     data[index].name = text;
-    //data[index].values = value;
-    //console.log(index);
-    //console.log(text);
     this.props.onChange(data);
   }
 

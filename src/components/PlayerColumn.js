@@ -7,14 +7,7 @@ class PlayerColumn extends React.Component {
 
   onValueChange = (index) => (value, selectedKey) => {
     let data = [...this.props.values];
-
     data[index] = value;
-    //
-    // // If the field after has a number in...
-    // if (data[index + 1] && parseInt(data[index + 1]) > 0) {
-    //   // Add the changed by amount to the next score as well
-    // }
-
     this.props.onValueChange(null, data);
   }
 
@@ -29,20 +22,27 @@ class PlayerColumn extends React.Component {
     let values = [...this.props.values];
     let newValue = values[values.length - 1];
 
-    if (newValue === '.') {
-      values.push('');
-      this.props.onSubmit(null, values, 0);
+    // Don't actually do anything, there's nothing in da box
+    if (newValue === "") {
+      console.warn('Tried to submit a score but da box was empty');
+      return false;
     }
 
+    // Value is a number or one of the allowed special chars
+    // if (isNaN(newValue) && newValue !== '.' && newValue !== '-') {
+    //
+    // }
+
+    // Add da new value in as a score
     if (!isNaN(newValue)) {
-      let newScore = parseInt(newValue);
-      values.push('');
-      this.props.onSubmit(null, values, newScore);
+      this.props.onSubmit(newValue);
     }
 
     // Add new field for the next score:
-    // data.push('');
-    // this.props.updateScores(null, data);
+    let data = [...this.props.values];
+    data.push('');
+    this.props.onValueChange(null, data);
+
   }
 
   render() {

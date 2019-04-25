@@ -30,18 +30,8 @@ class Scores extends React.Component {
     this.setState({ playerData: data });
   }
 
-  scoreSubmit = (field) => (event, updatedPlayerData, selectedKey) => {
-    //console.log(updatedPlayerData)
-    let data = { ...this.state.playerData };
-    data[field] = updatedPlayerData;
-
-    // Figure out whos go it is
-    //data.playerData.forEach
-
-    //console.log(data[field]);
-
-    this.setState({ data });
-    //console.log(this.state);
+  scoreSubmit = () => (data) => {
+    this.setState({ playerData: data });
   }
 
   render() {
@@ -51,7 +41,7 @@ class Scores extends React.Component {
         <ScoresTable
           playerData={this.state.playerData}
           onChange={this.onChange()}
-          onSubmit={this.scoreSubmit('playerData')}
+          onSubmit={this.scoreSubmit()}
         />
       </section>
     );
