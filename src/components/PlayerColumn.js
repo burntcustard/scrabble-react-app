@@ -14,11 +14,6 @@ class PlayerColumn extends React.Component {
     // if (data[index + 1] && parseInt(data[index + 1]) > 0) {
     //   // Add the changed by amount to the next score as well
     // }
-    //console.log(this.props.values);
-    //console.log(index);
-    //console.log(event);
-    //console.log(value);
-    //console.log(data);
 
     this.props.onValueChange(null, data);
   }
