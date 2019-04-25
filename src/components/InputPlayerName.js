@@ -7,6 +7,7 @@ function InputPlayerName({ player, index, onChange }) {
     <input
       className="player-name"
       aria-label={`Player ${index + 1} name`}
+      tabindex="1"
       type="text"
       value={player}
       onChange={(e) => onChange(e.target.value)}
