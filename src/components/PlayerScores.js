@@ -52,7 +52,7 @@ class PlayerScores extends React.Component {
         <ScoreCell
           key={index}
           value={value}
-          onFieldChange={this.onFieldChange(index)}
+          onChange={this.onFieldChange(index)}
           index={index}
         />
       );

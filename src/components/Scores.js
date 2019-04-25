@@ -2,22 +2,27 @@ import React from 'react';
 import ScoresTable from './ScoresTable';
 
 
-function Player(index, turn) {
+function Player(index) {
   this.name = 'Player' + index;
   this.scores = [];
+  this.totalScore = () => this.scores.reduce((acc, curr) => acc + curr, 0);
   this.values = [''];
-  this.total = 0;
-  this.isTurn = turn || false;
 }
 
 
 class Scores extends React.Component {
 
-  state = {
-    playerData: [
-      new Player(1, true),
-      new Player(2)
-    ]
+  constructor(props) {
+    super(props);
+    this.state = {
+      playerData: [],
+      noOfPlayers: 2,
+      turn: 0
+    };
+
+    for (let i = 1; i <= this.state.noOfPlayers; i++) {
+      this.state.playerData.push(new Player(i));
+    }
   }
 
   onFieldChange = (field) => (event, value, selectedKey) => {
