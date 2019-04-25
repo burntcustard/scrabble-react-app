@@ -70,7 +70,7 @@ class PlayerColumn extends React.Component {
           onSubmit={this.onSubmit}
         >
           {renderedScores}
-          <input type="submit" tabindex="-1" />
+          <input type="submit" tabIndex="-1" />
         </form>
       </div>
     );
