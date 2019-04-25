@@ -9,7 +9,15 @@ class ScoresTable extends React.Component {
     let playerData = [...this.props.playerData];
     let player = playerData[index];
 
-    player.scores.push(player.values[player.values.length - 1]);
+    // The player was adding a new score
+    if (player.values.length > player.scores.length) {
+
+      player.scores.push(parseInt(player.values[player.values.length - 1]));
+
+      player.values[player.values.length - 1] = player.totalScore();
+    }
+
+
 
     // Update the values
     //player.values = values;
@@ -35,8 +43,6 @@ class ScoresTable extends React.Component {
     //   }
     //   return prev;
     // }, 0);
-
-    console.log(player);
 
     this.props.onChange(playerData);
   }
