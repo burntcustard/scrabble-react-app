@@ -6,8 +6,8 @@ import './Scores.css';
 function Player(index) {
   this.name = 'Player ' + index;
   this.scores = [];
-  this.totalScore = () => this.scores.reduce((acc, curr) => acc + curr, 0);
   this.values = [''];
+  this.totalScore = () => this.scores.reduce((acc, curr) => acc + curr, 0);
 }
 
 
@@ -26,19 +26,8 @@ class Scores extends React.Component {
     }
   }
 
-  onFieldChange = (field) => (event, value, selectedKey) => {
-    let data = [ ...this.state.playerData ];
-    data[field] = value;
-    //console.log(data);
-    this.setState({ data });
-    //console.log(this.state);
-  }
-
-  onNameChange = (field) => (event, value, selectedKey) => {
-    let data = [ ...this.state.playerData ];
-    data[field] = value;
-    this.setState({ data });
-    console.log(this.state);
+  onChange = () => (data) => {
+    this.setState({ playerData: data });
   }
 
   scoreSubmit = (field) => (event, updatedPlayerData, selectedKey) => {
@@ -61,8 +50,7 @@ class Scores extends React.Component {
       <section className="scores">
         <ScoresTable
           playerData={this.state.playerData}
-          onFieldChange={this.onFieldChange('playerData')}
-          onNameChange={this.onNameChange('playerData')}
+          onChange={this.onChange()}
           onSubmit={this.scoreSubmit('playerData')}
         />
       </section>

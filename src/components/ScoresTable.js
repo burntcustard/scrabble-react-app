@@ -36,10 +36,10 @@ class ScoresTable extends React.Component {
     this.props.onSubmit(null, playerData);
   }
 
-  onFieldChange = (index) => (event, value, selectedKey) => {
+  onValueChange = (index) => (event, value, selectedKey) => {
     let data = [...this.props.playerData];
     data[index].values = value;
-    this.props.onFieldChange(null, data);
+    this.props.onChange(data);
   }
 
   onNameChange = (index) => (text) => {
@@ -48,7 +48,7 @@ class ScoresTable extends React.Component {
     //data[index].values = value;
     //console.log(index);
     //console.log(text);
-    this.props.onNameChange(null, data);
+    this.props.onChange(data);
   }
 
   render() {
@@ -60,7 +60,7 @@ class ScoresTable extends React.Component {
           values={player.values}
           player={player.name}
           index={playerIndex}
-          onFieldChange={this.onFieldChange(playerIndex)}
+          onValueChange={this.onValueChange(playerIndex)}
           onNameChange={this.onNameChange(playerIndex)}
           onSubmit={this.onSubmit(playerIndex)}
         />

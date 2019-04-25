@@ -5,7 +5,7 @@ import InputScore from './InputScore';
 
 class PlayerColumn extends React.Component {
 
-  onFieldChange = (index) => (event, value, selectedKey) => {
+  onValueChange = (index) => (value, selectedKey) => {
     let data = [...this.props.values];
 
     data[index] = value;
@@ -14,8 +14,13 @@ class PlayerColumn extends React.Component {
     // if (data[index + 1] && parseInt(data[index + 1]) > 0) {
     //   // Add the changed by amount to the next score as well
     // }
+    //console.log(this.props.values);
+    //console.log(index);
+    //console.log(event);
+    //console.log(value);
+    //console.log(data);
 
-    this.props.onFieldChange(null, data);
+    this.props.onValueChange(null, data);
   }
 
   onSubmit = (event) => {
@@ -51,7 +56,7 @@ class PlayerColumn extends React.Component {
         <InputScore
           key={index}
           value={value}
-          onChange={this.onFieldChange(index)}
+          onChange={this.onValueChange(index)}
           player={this.props.player}
           index={index}
         />
