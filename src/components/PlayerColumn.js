@@ -59,18 +59,20 @@ class PlayerColumn extends React.Component {
     });
 
     return (
-      <form
-        className="player-column"
-        onSubmit={this.onSubmit}
-      >
+      <div className="player-column">
         <InputPlayerName
           player={this.props.player}
           index={this.props.index}
           onChange={(text) => this.props.onNameChange(text)}
         />
-        {renderedScores}
-        <input type="submit" />
-      </form>
+        <form
+          className="player-scores"
+          onSubmit={this.onSubmit}
+        >
+          {renderedScores}
+          <input type="submit" />
+        </form>
+      </div>
     );
   }
 
