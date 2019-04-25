@@ -1,5 +1,6 @@
 import React from 'react';
 import ScoresTable from './ScoresTable';
+import './Scores.css';
 
 
 function Player(index) {

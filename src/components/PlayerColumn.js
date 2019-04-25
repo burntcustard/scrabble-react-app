@@ -1,9 +1,9 @@
 import React from 'react';
-import ScoreCell from './InputScore';
-import './PlayerScores.css';
+import InputPlayerName from './InputPlayerName';
+import InputScore from './InputScore';
 
 
-class PlayerScores extends React.Component {
+class PlayerColumn extends React.Component {
 
   onFieldChange = (index) => (event, value, selectedKey) => {
     let data = [...this.props.values];
@@ -49,10 +49,11 @@ class PlayerScores extends React.Component {
     var renderedScores = this.props.values.map((value, index) => {
       //console.log(score.key);
       return (
-        <ScoreCell
+        <InputScore
           key={index}
           value={value}
           onChange={this.onFieldChange(index)}
+          player={this.props.player}
           index={index}
         />
       );
@@ -60,9 +61,12 @@ class PlayerScores extends React.Component {
 
     return (
       <form
-        className="player-scores"
+        className="player-column"
         onSubmit={this.onSubmit}
       >
+        <InputPlayerName
+          player={this.props.player}
+        />
         {renderedScores}
         <input type="submit" />
       </form>
@@ -71,4 +75,4 @@ class PlayerScores extends React.Component {
 
 }
 
-export default PlayerScores;
+export default PlayerColumn;

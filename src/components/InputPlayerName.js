@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 
-function InputPlayerName() {
-  const [text, setField] = useState('');
+function InputPlayerName({ player, index }) {
+  const [text, setField] = useState(player);
 
   return (
     <input

@@ -1,0 +1,22 @@
+
+.scores-table {
+  display: flex;
+}
+
+.player-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  text-align: center;
+}
+
+input.score {
+  width: 20px;
+}
+
+input.player-name {
+
+}

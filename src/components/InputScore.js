@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
 
-function InputScore() {
+function InputScore({ player, index }) {
   const [text, setField] = useState('');
 
   return (
     <input
       className="score"
+      aria-label={player + " score " + (index + 1)}
       type="tel"  // To use the numpad onscreen keyboard
       value={text}
       onChange={(e) => setField(e.target.value)}

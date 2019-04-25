@@ -1,6 +1,5 @@
 import React from 'react';
-import PlayerScores from './PlayerScores';
-import './ScoresTable.css';
+import PlayerColumn from './PlayerColumn';
 
 
 class ScoresTable extends React.Component {
@@ -46,16 +45,14 @@ class ScoresTable extends React.Component {
   render() {
     const renderedTable = this.props.playerData.map((player, pIndex) => {
       return (
-        <div className="scores-table__column" key={pIndex}>
-          <div className="playerName">{player.name}</div>
-          <PlayerScores
-            key={player.key}
-            scores={player.scores}
-            values={player.values}
-            onFieldChange={this.onFieldChange(pIndex)}
-            onSubmit={this.onSubmit(pIndex)}
-          />
-        </div>
+        <PlayerColumn
+          key={player.key}
+          scores={player.scores}
+          values={player.values}
+          player={player.name}
+          onFieldChange={this.onFieldChange(pIndex)}
+          onSubmit={this.onSubmit(pIndex)}
+        />
       );
     });
 
