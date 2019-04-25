@@ -35,6 +35,7 @@ class PlayerColumn extends React.Component {
 
     // Add da new value in as a score
     if (!isNaN(newValue)) {
+      newValue = Number(newValue);
       this.props.onSubmit(newValue);
     }
 

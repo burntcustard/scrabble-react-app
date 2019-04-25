@@ -4,18 +4,40 @@ import PlayerColumn from './PlayerColumn';
 
 class ScoresTable extends React.Component {
 
-  onSubmit = (index) => (newValue) => {
+  onSubmit = (index) => () => {
 
     let playerData = [...this.props.playerData];
     let player = playerData[index];
 
-    // The player was adding a new score
-    if (player.values.length > player.scores.length) {
+    // Compare the current values, to an older set of values, starting at ze bottom
 
-      player.scores.push(parseInt(player.values[player.values.length - 1]));
+    for (let i = player.values.length - 1; i >= 0; i--) {
+      if (player.values[i] !== player.valuesOld[i]) {
 
-      player.values[player.values.length - 1] = player.totalScore();
+        // New value been added
+        if (i === player.values.length - 1) {
+          player.scores.push(Number(player.values[i]));
+          player.values[i] = player.totalScore();
+        }
+
+        // Value has been edited!
+        // ...
+      }
     }
+
+    // If the bottom two are different, it's because a new score was entered!
+
+    player.valuesOld = player.values;
+
+
+
+    // The player was adding a new score
+    // if (player.values.length > player.scores.length) {
+    //
+    //   player.scores.push(newValue);
+    //
+    //   player.values[player.values.length - 1] = player.totalScore();
+    // }
 
 
 

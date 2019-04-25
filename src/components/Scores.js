@@ -7,6 +7,7 @@ function Player(index) {
   this.name = 'Player ' + index;
   this.scores = [];
   this.values = [''];
+  this.valuesOld = [''];
   this.totalScore = () => this.scores.reduce((acc, curr) => acc + curr, 0);
 }
 

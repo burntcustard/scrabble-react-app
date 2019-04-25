@@ -11,6 +11,7 @@ function InputScore({ player, value, index, onChange }) {
       type="tel"  // To use the numpad onscreen keyboard
       value={value}
       onChange={(e) => onChange(e.target.value)}
+      //onBlur={(e) => onBlur(e.target.value)}
     />
   );
 }
