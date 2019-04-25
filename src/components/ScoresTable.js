@@ -42,16 +42,27 @@ class ScoresTable extends React.Component {
     this.props.onFieldChange(null, data);
   }
 
+  onNameChange = (index) => (text) => {
+    let data = [...this.props.playerData];
+    data[index].name = text;
+    //data[index].values = value;
+    //console.log(index);
+    //console.log(text);
+    this.props.onNameChange(null, data);
+  }
+
   render() {
-    const renderedTable = this.props.playerData.map((player, pIndex) => {
+    const renderedTable = this.props.playerData.map((player, playerIndex) => {
       return (
         <PlayerColumn
-          key={player.key}
+          key={playerIndex}
           scores={player.scores}
           values={player.values}
           player={player.name}
-          onFieldChange={this.onFieldChange(pIndex)}
-          onSubmit={this.onSubmit(pIndex)}
+          index={playerIndex}
+          onFieldChange={this.onFieldChange(playerIndex)}
+          onNameChange={this.onNameChange(playerIndex)}
+          onSubmit={this.onSubmit(playerIndex)}
         />
       );
     });

@@ -7,7 +7,7 @@ function InputScore({ player, index }) {
   return (
     <input
       className="score"
-      aria-label={player + " score " + (index + 1)}
+      aria-label={player + " - running total " + (index + 1)}
       type="tel"  // To use the numpad onscreen keyboard
       value={text}
       onChange={(e) => setField(e.target.value)}

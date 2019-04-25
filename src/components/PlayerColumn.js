@@ -47,7 +47,6 @@ class PlayerColumn extends React.Component {
 
   render() {
     var renderedScores = this.props.values.map((value, index) => {
-      //console.log(score.key);
       return (
         <InputScore
           key={index}
@@ -66,6 +65,8 @@ class PlayerColumn extends React.Component {
       >
         <InputPlayerName
           player={this.props.player}
+          index={this.props.index}
+          onChange={(text) => this.props.onNameChange(text)}
         />
         {renderedScores}
         <input type="submit" />
