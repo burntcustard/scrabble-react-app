@@ -25,10 +25,9 @@ class ScoresTable extends React.Component {
       }
     }
 
-    // If the bottom two are different, it's because a new score was entered!
 
     player.valuesOld = player.values;
-
+    this.props.onChange(playerData);
 
 
     // The player was adding a new score
@@ -66,7 +65,7 @@ class ScoresTable extends React.Component {
     //   return prev;
     // }, 0);
 
-    this.props.onChange(playerData);
+
   }
 
   onValueChange = (index) => (event, value, selectedKey) => {
