@@ -1,5 +1,5 @@
 import React from 'react';
-import ScoreCell from './ScoreCell';
+import ScoreCell from './InputScore';
 import './PlayerScores.css';
 
 

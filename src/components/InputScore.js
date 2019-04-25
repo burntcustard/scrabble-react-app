@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import './ScoreCell.css';
 
 
-function ScoreCell() {
+function InputScore() {
   const [text, setField] = useState('');
 
   return (
     <input
-      className="score-cell"
-      type="tel"
+      className="score"
+      type="tel"  // To use the numpad onscreen keyboard
       value={text}
       onChange={(e) => setField(e.target.value)}
     />
   );
 }
 
-export default ScoreCell;
+export default InputScore;
